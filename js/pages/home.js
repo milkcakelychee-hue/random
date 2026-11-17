@@ -14,7 +14,7 @@ export function render(root) {
     </div>
     <div class="tool-grid">
       ${TOOLS.map(t => `
-        <a class="tool-card surface" href="${t.href}">
+        <button type="button" class="tool-card surface" data-href="${t.href}">
           <span class="tool-top">
             ${icon(t.icon, 64, 0.9, 'tool-icon')}
             <span class="tool-arrow">${icon('arrow-up-right', 18)}</span>
@@ -23,6 +23,6 @@ export function render(root) {
             <span class="tool-name">${t.name}</span>
             <span class="tool-desc">${t.desc}</span>
           </span>
-        </a>`).join('')}
+        </button>`).join('')}
     </div>`;
 }

@@ -19,8 +19,8 @@ const app = document.getElementById('app');
 app.innerHTML = `
   <main id="view"></main>
   <nav class="tabbar" aria-label="เมนูหลัก">
-    <a class="tab" data-tab="calc" href="#/">${icon('calculator', 22)}<span>คำนวณ</span></a>
-    <a class="tab" data-tab="settings" href="#/settings">${icon('sliders-horizontal', 22)}<span>ตั้งค่า</span></a>
+    <button type="button" class="tab" data-tab="calc" data-href="#/">${icon('calculator', 22)}<span>คำนวณ</span></button>
+    <button type="button" class="tab" data-tab="settings" data-href="#/settings">${icon('sliders-horizontal', 22)}<span>ตั้งค่า</span></button>
   </nav>`;
 const view = document.getElementById('view');
 
@@ -38,6 +38,14 @@ function route() {
   window.scrollTo(0, 0);
 }
 window.addEventListener('hashchange', route);
+
+// ปุ่มนำทางเป็น <button data-href> (ไม่ใช้ <a> เพื่อกันหน้าต่าง peek ตอนกดค้างบน iPhone)
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-href]');
+  if (b) location.hash = b.dataset.href;
+});
+// iOS Safari ใส่สถานะ :active ให้ปุ่มก็ต่อเมื่อมี touch listener
+document.addEventListener('touchstart', () => {}, { passive: true });
 route();
 
 // ซ่อนเมนูล่างเมื่อช่องกรอกโฟกัส (แป้นพิมพ์เปิด)

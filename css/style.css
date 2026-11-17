@@ -39,7 +39,8 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; cursor: pointer; }
+button { font: inherit; color: inherit; cursor: pointer; appearance: none; -webkit-appearance: none; border: 0; margin: 0; padding: 0; background: none; text-align: inherit; }
+button, a { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 .surface {
@@ -88,6 +89,7 @@ body.kb-open .page { padding-bottom: 24px; }
   gap: 12px;
 }
 .tool-card {
+  text-align: left;
   height: 216px;
   padding: 20px;
   border-radius: 28px;
@@ -171,6 +173,7 @@ input::placeholder { color: var(--placeholder); }
   display: flex; align-items: center; gap: 6px; padding: 0 16px;
 }
 .field:focus-within { box-shadow: 0 0 0 2px var(--ink); }
+.conv-input .field:focus-within { box-shadow: none; }
 .field input { font-family: var(--font-head); font-weight: 400; font-size: 22px; line-height: 1.2; }
 /* ตัวเลือกหน่วย: <select> เนทีฟโปร่งใสวางทับทั้งปุ่ม */
 .unit-pick {
