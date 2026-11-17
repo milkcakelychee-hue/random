@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>แปลงหน่วย — ความยาว</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Prompt:wght@300;400;500;600&display=swap">
+<style>
+body{margin:0}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+input{border:0;outline:0;background:transparent;padding:0;margin:0;min-width:0;width:100%}
+input::placeholder{color:#A0A0A6}
+.surface{background:linear-gradient(180deg,#F5F5F6 0%,#EDEDEE 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 1px 2px rgba(10,10,10,.04),0 10px 28px rgba(10,10,10,.05)}
+button:focus-visible{outline:2px solid #0A0A0A;outline-offset:2px}
+.field:focus-within{box-shadow:0 0 0 2px #0A0A0A}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: radial-gradient(120% 60% at 50% 0%, #FFFFFF 0%, #FAFAFA 70%); overflow: hidden; font-family: 'Bai Jamjuree', sans-serif; color: #0A0A0A">
+
+<header style="position: absolute; left: 20px; right: 20px; top: 56px; display: flex; align-items: flex-start; gap: 14px">
+<button class="surface" type="button" aria-label="ย้อนกลับ" style="appearance: none; border: 0; margin: 0; padding: 0; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button>
+<h1 style="margin: 0; font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 30px; line-height: 44px; letter-spacing: -0.3px; color: #0A0A0A">แปลงหน่วย</h1>
+</header>
+
+<main style="position: absolute; left: 20px; right: 20px; top: 116px; display: flex; flex-direction: column; gap: 12px">
+<div role="group" aria-label="หมวดหน่วย" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); box-sizing: border-box; height: 52px; padding: 4px; border-radius: 26px; background: #F0F0F1; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(10,10,10,.04); gap: 4px"><button type="button" aria-pressed="false" style="appearance: none; border: 0; margin: 0; padding: 0; height: 44px; border-radius: 22px; background: transparent; font-weight: 500; color: #68686D; font-family: 'Bai Jamjuree', sans-serif; font-size: 15px">น้ำหนัก</button><button type="button" aria-pressed="false" style="appearance: none; border: 0; margin: 0; padding: 0; height: 44px; border-radius: 22px; background: transparent; font-weight: 500; color: #68686D; font-family: 'Bai Jamjuree', sans-serif; font-size: 15px">ปริมาตร</button><button type="button" aria-pressed="true" style="appearance: none; border: 0; margin: 0; padding: 0; height: 44px; border-radius: 22px; background: #0A0A0A; font-weight: 600; color: #FFFFFF; font-family: 'Bai Jamjuree', sans-serif; font-size: 15px">ความยาว</button></div>
+<div class="surface" style="box-sizing: border-box; border-radius: 24px; padding: 12px 16px 14px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<label for="val" style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.3; color: #68686D">ค่า</label>
+<div class="field" style="height: 52px; box-sizing: border-box; border-radius: 18px; background: #FFFFFF; display: flex; align-items: center; padding: 0 4px 0 16px; gap: 6px; padding-right: 16px">
+<input id="val" type="text" inputmode="decimal" value="1" placeholder="0" style="font-family: 'Prompt', sans-serif; font-weight: 400; font-size: 22px; line-height: 1.2; color: #0A0A0A">
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.3; color: #68686D">จากหน่วย</span>
+<button type="button" aria-label="จากหน่วย ม." style="appearance: none; border: 0; margin: 0; padding: 0 12px 0 16px; box-sizing: border-box; height: 52px; border-radius: 18px; background: #FFFFFF; display: flex; align-items: center; justify-content: space-between"><span style="font-family: 'Prompt', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A">ม.</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#68686D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<button class="surface" type="button" aria-label="ซม. 100" style="appearance: none; border: 0; margin: 0; padding: 0 20px; box-sizing: border-box; height: 72px; border-radius: 24px; ; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left">
+<span style="font-family: 'Prompt', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A; flex: none">ซม.</span>
+<span style="font-family: 'Prompt', sans-serif; font-weight: 300; font-size: 30px; line-height: 1.1; letter-spacing: -0.5px; color: #0A0A0A; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right">100</span>
+</button>
+<button class="" type="button" aria-label="ม. 1" style="appearance: none; border: 0; margin: 0; padding: 0 20px; box-sizing: border-box; height: 72px; border-radius: 24px; background: #0A0A0A; box-shadow: 0 10px 24px rgba(10,10,10,.14); display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left">
+<span style="font-family: 'Prompt', sans-serif; font-weight: 500; font-size: 18px; color: #FFFFFF; flex: none">ม.</span>
+<span style="font-family: 'Prompt', sans-serif; font-weight: 300; font-size: 30px; line-height: 1.1; letter-spacing: -0.5px; color: #FFFFFF; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right">1</span>
+</button>
+<button class="surface" type="button" aria-label="นิ้ว 39.3701" style="appearance: none; border: 0; margin: 0; padding: 0 20px; box-sizing: border-box; height: 72px; border-radius: 24px; ; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left">
+<span style="font-family: 'Prompt', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A; flex: none">นิ้ว</span>
+<span style="font-family: 'Prompt', sans-serif; font-weight: 300; font-size: 30px; line-height: 1.1; letter-spacing: -0.5px; color: #0A0A0A; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right">39.3701</span>
+</button>
+<button class="surface" type="button" aria-label="ฟุต 3.2808" style="appearance: none; border: 0; margin: 0; padding: 0 20px; box-sizing: border-box; height: 72px; border-radius: 24px; ; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left">
+<span style="font-family: 'Prompt', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A; flex: none">ฟุต</span>
+<span style="font-family: 'Prompt', sans-serif; font-weight: 300; font-size: 30px; line-height: 1.1; letter-spacing: -0.5px; color: #0A0A0A; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right">3.2808</span>
+</button>
+</div>
+</main>
+
+<nav aria-label="เมนูหลัก" style="position: absolute; left: 20px; right: 20px; bottom: 30px; height: 64px; box-sizing: border-box; padding: 6px; border-radius: 32px; background: #F0F0F1; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 24px rgba(10,10,10,.06); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<button type="button" aria-current="page" style="appearance: none; border: 0; margin: 0; padding: 0; height: 52px; border-radius: 26px; background: #0A0A0A; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 600; font-size: 15px; line-height: 1.2; color: #FFFFFF">คำนวณ</span>
+</button>
+<button type="button" style="appearance: none; border: 0; margin: 0; padding: 0; height: 52px; border-radius: 26px; background: transparent; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68686D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></svg>
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 15px; line-height: 1.2; color: #68686D">ตั้งค่า</span>
+</button>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

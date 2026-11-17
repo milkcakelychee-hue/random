@@ -1,0 +1,52 @@
+:root {
+  --bg: #FAFAFA;
+  --surface-top: #F5F5F6;
+  --surface-bottom: #EDEDEE;
+  --surface-flat: #F0F0F1;
+  --white: #FFFFFF;
+  --ink: #0A0A0A;
+  --gray: #68686D;
+  --gray-heading: #8E8E93;
+  --gray-on-black: #B4B4B9;
+  --gray-icon: #B9B9BE;
+  --placeholder: #A0A0A6;
+  --hairline: #E2E2E4;
+  --green-fill: #BFE9CB;
+  --green-ink: #176B35;
+  --scrim: rgba(10, 10, 10, .42);
+  --font-head: 'Prompt', system-ui, sans-serif;
+  --font-body: 'Bai Jamjuree', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background: radial-gradient(120% 60% at 50% 0%, #FFFFFF 0%, var(--bg) 70%) fixed, var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-text-size-adjust: 100%;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+
+/* ขั้น 1: โครงหน้าแรกชั่วคราว (ทำจริงในขั้น 3) */
+.page-title {
+  margin: 0;
+  padding: 72px 24px 0;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+.page-sub {
+  margin: 0;
+  padding: 0 24px;
+  font-family: var(--font-head);
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: -0.2px;
+  color: var(--gray-heading);
+}

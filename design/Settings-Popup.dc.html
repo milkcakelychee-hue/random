@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ตั้งค่า — ป๊อปอัปมีอะไรใหม่</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Prompt:wght@300;400;500;600&display=swap">
+<style>
+body{margin:0}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+input{border:0;outline:0;background:transparent;padding:0;margin:0;min-width:0;width:100%}
+input::placeholder{color:#A0A0A6}
+.surface{background:linear-gradient(180deg,#F5F5F6 0%,#EDEDEE 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 1px 2px rgba(10,10,10,.04),0 10px 28px rgba(10,10,10,.05)}
+button:focus-visible{outline:2px solid #0A0A0A;outline-offset:2px}
+.field:focus-within{box-shadow:0 0 0 2px #0A0A0A}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: radial-gradient(120% 60% at 50% 0%, #FFFFFF 0%, #FAFAFA 70%); overflow: hidden; font-family: 'Bai Jamjuree', sans-serif; color: #0A0A0A">
+
+<h1 style="position: absolute; left: 24px; right: 24px; top: 72px; margin: 0; font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 40px; line-height: 1.25; letter-spacing: -0.5px; color: #0A0A0A">ตั้งค่า</h1>
+
+<main style="position: absolute; left: 20px; right: 20px; top: 146px; display: flex; flex-direction: column; gap: 10px">
+<div class="surface" style="box-sizing: border-box; padding: 12px 12px 12px 18px; border-radius: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.3; color: #68686D">เกี่ยวกับแอป</span>
+<span style="font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.3px; color: #0A0A0A">random</span>
+</div>
+<button type="button" aria-haspopup="dialog" aria-label="เวอร์ชัน 1.0 ดูว่ามีอะไรใหม่" style="appearance: none; border: 0; margin: 0; padding: 0 18px; height: 44px; border-radius: 22px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(10,10,10,.08); font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 14px; color: #0A0A0A">เวอร์ชัน 1.0</button>
+</div>
+</main>
+
+<nav aria-label="เมนูหลัก" style="position: absolute; left: 20px; right: 20px; bottom: 30px; height: 64px; box-sizing: border-box; padding: 6px; border-radius: 32px; background: #F0F0F1; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 24px rgba(10,10,10,.06); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<button type="button" style="appearance: none; border: 0; margin: 0; padding: 0; height: 52px; border-radius: 26px; background: transparent; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68686D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 15px; line-height: 1.2; color: #68686D">คำนวณ</span>
+</button>
+<button type="button" aria-current="page" style="appearance: none; border: 0; margin: 0; padding: 0; height: 52px; border-radius: 26px; background: #0A0A0A; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></svg>
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 600; font-size: 15px; line-height: 1.2; color: #FFFFFF">ตั้งค่า</span>
+</button>
+</nav>
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(10,10,10,.42); display: flex; align-items: center; justify-content: center; padding: 0 34px">
+<div role="dialog" aria-modal="true" aria-labelledby="pop-title" style="box-sizing: border-box; width: 100%; border-radius: 28px; background: #FAFAFA; padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 60px rgba(10,10,10,.25)">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Bai Jamjuree', sans-serif; font-weight: 500; font-size: 13px; line-height: 1.3; color: #68686D">มีอะไรใหม่</span>
+<h2 id="pop-title" style="margin: 0; font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 22px; line-height: 1.3; color: #0A0A0A">เวอร์ชัน 1.0</h2>
+</div>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-family: 'Bai Jamjuree', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.5; color: #0A0A0A">
+<li>เทียบราคา: ของชิ้นไหนคุ้มกว่า</li>
+<li>ส่วนลด: ลดไปเท่าไหร่ จ่ายเท่าไหร่</li>
+<li>แปลงหน่วย: น้ำหนัก ปริมาตร ความยาว</li>
+</ul>
+<button type="button" style="appearance: none; border: 0; margin: 4px 0 0; padding: 0; height: 48px; border-radius: 24px; background: #0A0A0A; font-family: 'Bai Jamjuree', sans-serif; font-weight: 600; font-size: 16px; color: #FFFFFF">ปิด</button>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
