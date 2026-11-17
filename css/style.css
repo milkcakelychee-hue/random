@@ -42,6 +42,8 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; appearance: none; -webkit-appearance: none; border: 0; margin: 0; padding: 0; background: none; text-align: inherit; }
 button, a { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* ช่องกรอกไม่มีกรอบดำตอนโฟกัส (ผู้ใช้ขอ) */
+input:focus, input:focus-visible, select:focus, select:focus-visible { outline: none; }
 
 .surface {
   background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
@@ -205,6 +207,7 @@ input::placeholder { color: var(--placeholder); }
   appearance: none; border: 0; margin: 0; padding: 0;
   height: 44px; border-radius: 22px; background: transparent;
   font-family: var(--font-body); font-weight: 500; font-size: 15px; color: var(--gray);
+  text-align: center;
 }
 .seg-btn.is-on { background: var(--ink); color: var(--white); font-weight: 600; }
 
