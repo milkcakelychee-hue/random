@@ -172,8 +172,7 @@ input::placeholder { color: var(--placeholder); }
   height: 52px; border-radius: 18px; background: var(--white);
   display: flex; align-items: center; gap: 6px; padding: 0 16px;
 }
-.field:focus-within { box-shadow: 0 0 0 2px var(--ink); }
-.conv-input .field:focus-within { box-shadow: none; }
+/* ไม่มีกรอบดำตอนช่องกรอกโฟกัส ทุกหน้า (ผู้ใช้ขอ) */
 .field input { font-family: var(--font-head); font-weight: 400; font-size: 22px; line-height: 1.2; }
 /* ตัวเลือกหน่วย: <select> เนทีฟโปร่งใสวางทับทั้งปุ่ม */
 .unit-pick {
