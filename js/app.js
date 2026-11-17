@@ -27,7 +27,7 @@ const view = document.getElementById('view');
 function route() {
   const path = location.hash.replace(/^#/, '') || '/';
   const r = ROUTES[path] || ROUTES['/'];
-  document.body.classList.remove('kb-open');
+  document.body.classList.remove('kb-open', 'modal-open');
   view.className = `page page-${path === '/' ? 'home' : path.slice(1)}`;
   r.page.render(view);
   for (const t of document.querySelectorAll('.tab')) {
@@ -46,6 +46,10 @@ document.addEventListener('click', e => {
 });
 // iOS Safari ใส่สถานะ :active ให้ปุ่มก็ต่อเมื่อมี touch listener
 document.addEventListener('touchstart', () => {}, { passive: true });
+// ล็อกการถ่างซูมบน iOS (Safari ไม่สน user-scalable=no เสมอไป)
+for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) {
+  document.addEventListener(ev, e => e.preventDefault(), { passive: false });
+}
 route();
 
 // ซ่อนเมนูล่างเมื่อช่องกรอกโฟกัส (แป้นพิมพ์เปิด)
