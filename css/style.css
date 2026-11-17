@@ -27,22 +27,53 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-text-size-adjust: 100%;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 
-/* ขั้น 1: โครงหน้าแรกชั่วคราว (ทำจริงในขั้น 3) */
-.page-title {
+/* ระยะบนอิงกรอบดีไซน์ 390×844 (รวมแถบสถานะ ~47px): บนจอที่ไม่มี safe area ใช้ค่าดีไซน์ตรง ๆ */
+:root {
+  --top-title: max(72px, calc(env(safe-area-inset-top) + 25px));
+  --top-tool: max(56px, calc(env(safe-area-inset-top) + 9px));
+  --nav-bottom: max(12px, calc(env(safe-area-inset-bottom) - 4px));
+  --nav-space: calc(64px + var(--nav-bottom) + 24px);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.surface {
+  background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 1px 2px rgba(10,10,10,.04), 0 10px 28px rgba(10,10,10,.05);
+}
+
+.page { padding: 0 20px var(--nav-space); }
+body.kb-open .page { padding-bottom: 24px; }
+
+/* หัวข้อ */
+.title-xl {
   margin: 0;
-  padding: 72px 24px 0;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 40px;
   line-height: 1.25;
   letter-spacing: -0.5px;
 }
-.page-sub {
+.title-md {
   margin: 0;
-  padding: 0 24px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 44px;
+  letter-spacing: -0.3px;
+}
+.settings-title { padding: var(--top-title) 4px 0; }
+
+/* หน้าแรก */
+/* กริดเริ่มที่ y 244 ตามดีไซน์ ไม่ว่าคำอธิบายจะเป็น 1 หรือ 2 บรรทัด */
+.home-head { padding: var(--top-title) 4px 0; min-height: calc(var(--top-title) + 136px); }
+.home-sub {
+  margin: 0;
   font-family: var(--font-head);
   font-weight: 300;
   font-size: 28px;
@@ -50,3 +81,81 @@ body {
   letter-spacing: -0.2px;
   color: var(--gray-heading);
 }
+.tool-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.tool-card {
+  height: 216px;
+  padding: 20px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .14s ease, background .14s ease, box-shadow .14s ease;
+  -webkit-user-select: none; user-select: none;
+}
+/* การ์ดสุดท้ายที่อยู่ลำพังในแถว กว้างเต็มแถว */
+.tool-card:last-child:nth-child(odd) { grid-column: 1 / -1; height: 144px; }
+.tool-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.tool-icon { color: var(--gray-icon); }
+.tool-arrow {
+  width: 40px; height: 40px; border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 1px 3px rgba(10,10,10,.08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink);
+  transition: background .14s ease, color .14s ease;
+}
+.tool-text { display: flex; flex-direction: column; gap: 6px; }
+.tool-name { font-family: var(--font-head); font-weight: 500; font-size: 22px; line-height: 1.25; }
+.tool-desc { font-size: 14px; line-height: 1.4; color: var(--gray); }
+.tool-card:active {
+  background: linear-gradient(180deg, #E9E9EB, #E1E1E3);
+  box-shadow: inset 0 2px 6px rgba(10,10,10,.06), 0 1px 2px rgba(10,10,10,.04);
+  transform: scale(.97);
+}
+.tool-card:active .tool-arrow { background: var(--ink); color: var(--white); }
+
+/* แถวหัวข้อหน้าเครื่องมือ */
+.tool-head {
+  padding-top: var(--top-tool);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.back-btn {
+  flex: none;
+  width: 44px; height: 44px; border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+body.kb-open .tool-head { padding-top: max(52px, calc(env(safe-area-inset-top) + 5px)); }
+
+/* เมนูล่าง */
+.tabbar {
+  position: fixed;
+  left: 20px; right: 20px;
+  bottom: var(--nav-bottom);
+  max-width: 560px;
+  margin: 0 auto;
+  height: 64px;
+  padding: 6px;
+  border-radius: 32px;
+  background: var(--surface-flat);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 24px rgba(10,10,10,.06);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  z-index: 10;
+}
+body.kb-open .tabbar, body.modal-open .tabbar { display: none; }
+.tab {
+  height: 52px;
+  border-radius: 26px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-weight: 500; font-size: 15px; line-height: 1.2;
+  color: var(--gray);
+}
+.tab.is-active { background: var(--ink); color: var(--white); font-weight: 600; }
