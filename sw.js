@@ -2,7 +2,7 @@
 const VERSION = new URL(self.location).searchParams.get('v') || 'dev';
 // BUILD ถูกเขียนใหม่อัตโนมัติทุก commit (.githooks/pre-commit) ให้ไฟล์นี้เปลี่ยนทุกครั้งที่ขึ้นเว็บ
 // เบราว์เซอร์จึงรู้ว่ามีของใหม่ แล้วแอปรีโหลดตัวเองเมื่อกลับมาเปิด
-const BUILD = '20261117071657';
+const BUILD = '20261117072242';
 const APP_CACHE = `random-app-${VERSION}-${BUILD}`;
 const FONT_CACHE = 'random-fonts';
 
