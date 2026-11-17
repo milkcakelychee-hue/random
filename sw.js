@@ -2,7 +2,7 @@
 const VERSION = new URL(self.location).searchParams.get('v') || 'dev';
 // BUILD ถูกเขียนใหม่อัตโนมัติทุก commit (.githooks/pre-commit) ให้ไฟล์นี้เปลี่ยนทุกครั้งที่ขึ้นเว็บ
 // เบราว์เซอร์จึงรู้ว่ามีของใหม่ แล้วแอปรีโหลดตัวเองเมื่อกลับมาเปิด
-const BUILD = '20261117064149';
+const BUILD = '20261117070024';
 const APP_CACHE = `random-app-${VERSION}-${BUILD}`;
 const FONT_CACHE = 'random-fonts';
 
@@ -31,8 +31,28 @@ const APP_FILES = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(APP_CACHE).then(c => c.addAll(APP_FILES.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(APP_CACHE)
+      .then(c => c.addAll(APP_FILES.map(u => new Request(u, { cache: 'reload' }))))
+      .then(() => precacheFonts())
+      .then(() => self.skipWaiting())
+  );
 });
+
+// เก็บฟอนต์ไว้ตั้งแต่ติดตั้ง เปิดแบบออฟไลน์ครั้งแรกก็ยังได้ Prompt / Bai Jamjuree (ทำแบบพยายาม ไม่ให้การติดตั้งล้ม)
+const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Prompt:wght@300;400;500;600&display=swap';
+async function precacheFonts() {
+  try {
+    const c = await caches.open(FONT_CACHE);
+    if (await c.match(FONT_CSS)) return;
+    const res = await fetch(FONT_CSS);
+    if (!res.ok) return;
+    const css = await res.clone().text();
+    await c.put(FONT_CSS, res);
+    const urls = [...css.matchAll(/url\((https:\/\/fonts\.gstatic\.com\/[^)]+)\)/g)].map(m => m[1]);
+    await Promise.all(urls.map(u => fetch(u).then(r => r.ok && c.put(u, r)).catch(() => {})));
+  } catch {}
+}
 
 self.addEventListener('activate', e => {
   e.waitUntil(

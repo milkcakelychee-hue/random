@@ -267,7 +267,7 @@ body.kb-open .cmp-body { margin-top: 12px; gap: 10px; }
 .res-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .res-tiny { font-size: 12px; color: var(--gray-on-black); }
 .res-win { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.res-win-main { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.res-win-main { flex: none; display: flex; flex-direction: column; gap: 8px; }
 .win-letter {
   flex: none; width: 38px; height: 38px; border-radius: 11px;
   background: var(--green-fill); color: var(--green-ink);
@@ -277,7 +277,10 @@ body.kb-open .cmp-body { margin-top: 12px; gap: 10px; }
 .res-save { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
 .res-mute { font-size: 15px; color: var(--gray-on-black); }
 .res-pct { font-family: var(--font-head); font-weight: 500; font-size: 18px; line-height: 1.1; }
-.res-per { flex: none; display: flex; flex-direction: column; gap: 6px; text-align: right; font-size: 12px; color: #A1A1A6; }
+.res-per { flex: 0 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; text-align: right; font-size: 12px; color: #A1A1A6; }
+/* ราคาต่อหน่วยยาวมาก: ตัดด้วย … แทนการดันหัวข้อให้ตกบรรทัด */
+.res-per span, .res-tiny { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.res-big { white-space: nowrap; }
 .res-per .is-win { color: var(--white); font-weight: 600; }
 
 .opt-card {
