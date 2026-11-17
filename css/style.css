@@ -21,6 +21,8 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body { margin: 0; min-height: 100%; }
+/* แถบสถานะด้านบนใช้สีเดียวกับขอบบนของพื้นหลัง (ขาว) จึงไม่เห็นเป็นขอบแยก */
+html { background: #FFFFFF; }
 /* ล็อกไม่ให้ถ่างซูม เลื่อนขึ้นลงได้อย่างเดียว */
 html, body { touch-action: pan-y; overscroll-behavior-x: none; overflow-x: hidden; }
 
