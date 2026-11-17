@@ -1,6 +1,9 @@
 // เลขเวอร์ชันแคชมาจาก APP_VERSION ใน js/version.js (app.js register เป็น sw.js?v=<APP_VERSION>)
 const VERSION = new URL(self.location).searchParams.get('v') || 'dev';
-const APP_CACHE = `random-app-${VERSION}`;
+// BUILD ถูกเขียนใหม่อัตโนมัติทุก commit (.githooks/pre-commit) ให้ไฟล์นี้เปลี่ยนทุกครั้งที่ขึ้นเว็บ
+// เบราว์เซอร์จึงรู้ว่ามีของใหม่ แล้วแอปรีโหลดตัวเองเมื่อกลับมาเปิด
+const BUILD = '20261117062106';
+const APP_CACHE = `random-app-${VERSION}-${BUILD}`;
 const FONT_CACHE = 'random-fonts';
 
 // ไฟล์แอปทั้งหมด (เพิ่มรายการเมื่อสร้างไฟล์ใหม่ในขั้นถัดไป)
@@ -28,7 +31,7 @@ const APP_FILES = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(APP_CACHE).then(c => c.addAll(APP_FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(APP_CACHE).then(c => c.addAll(APP_FILES.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {

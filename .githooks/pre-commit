@@ -1,0 +1,5 @@
+#!/bin/sh
+# เขียนเวลา build ลง sw.js ทุก commit เพื่อให้แอปที่ติดตั้งไว้รู้ว่ามีของใหม่
+stamp=$(date -u +%Y%m%d%H%M%S)
+sed -i "s/^const BUILD = '.*';/const BUILD = '$stamp';/" sw.js
+git add sw.js

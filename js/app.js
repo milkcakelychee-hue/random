@@ -56,7 +56,26 @@ document.addEventListener('focusout', () => {
 });
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`).catch(() => {});
+  // อัปเดตตัวเอง: เช็กของใหม่ทุกครั้งที่แอปกลับมาอยู่หน้าจอ ถ้ามี service worker ใหม่เข้าคุม ให้รีโหลดหน้าเอง
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloading) return; // ติดตั้งครั้งแรกไม่ต้องรีโหลด
+    reloading = true;
+    location.reload();
   });
+  const start = () => {
+    navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`, { updateViaCache: 'none' })
+      .then(reg => {
+        const check = () => reg.update().catch(() => {});
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') check();
+        });
+        window.addEventListener('focus', check);
+        window.addEventListener('online', check);
+      })
+      .catch(() => {});
+  };
+  // ลงทะเบียนหลังหน้าโหลดเสร็จ (ถ้าโหลดเสร็จไปแล้วก็เริ่มเลย)
+  if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
 }
